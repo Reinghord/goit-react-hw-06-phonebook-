@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import actions from 'redux/phonebook/phonebook-actions';
+// import PropTypes from 'prop-types';
 import s from './Filter.module.css';
 
-function Filter({ onFilter }) {
-  const onHandleSearch = e => {
-    onFilter(e.target.value);
-  };
+function Filter() {
+  const dispatch = useDispatch();
+  const onFilter = e => dispatch(actions.changeFilter(e.target.value));
 
   return (
     <>
@@ -18,12 +19,12 @@ function Filter({ onFilter }) {
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
-        onChange={onHandleSearch}
+        onChange={onFilter}
       />
     </>
   );
 }
 
-Filter.propTypes = { onFilter: PropTypes.func.isRequired };
+// Filter.propTypes = { onFilter: PropTypes.func.isRequired };
 
 export default Filter;
