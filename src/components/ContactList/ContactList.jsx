@@ -4,11 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import s from './ContactList.module.css';
 import { remove } from 'redux/phonebook/phonebook-reducer';
 function ContactList() {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.data);
   const filter = useSelector(state => state.filter);
 
   const dispatch = useDispatch();
   const onDelete = id => dispatch(remove(id));
+
   return (
     <>
       <ul>

@@ -8,7 +8,7 @@ function ContactForm() {
   const [userName, setUserName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.data);
 
   const dispatch = useDispatch();
   const onSubmit = (userName, number) => dispatch(add({ userName, number }));
