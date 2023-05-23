@@ -1,16 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
-import actions from 'redux/phonebook/phonebook-actions';
-import { getContacts, getFilter } from 'redux/phonebook/phonebook-selectors';
+// import { getContacts, getFilter } from 'redux/phonebook/phonebook-selectors';
 // import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
-
+import { remove } from 'redux/phonebook/phonebook-reducer';
 function ContactList() {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
 
   const dispatch = useDispatch();
-  const onDelete = id => dispatch(actions.remove(id));
-
+  const onDelete = id => dispatch(remove(id));
   return (
     <>
       <ul>

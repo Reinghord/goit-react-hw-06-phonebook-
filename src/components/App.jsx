@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
-import { getContacts } from '../redux/phonebook/phonebook-selectors';
 
 function App() {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(state => state.contacts);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
